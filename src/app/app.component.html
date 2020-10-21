@@ -1,15 +1,27 @@
-<mat-toolbar color="primary">Test site</mat-toolbar>
-<main>
-<div *ngIf="auth.user$ | async as user; else login">
-    {{ user | json }}
-    <hr>
-    <button class="mat-button" (click)="auth.signOut()">Sign Out</button>
-    </div>
+<mat-toolbar color="primary">Account Management</mat-toolbar>
 
+
+<div *ngIf="auth.user$ | async as user; else login">
+
+
+
+    <!-- This is when loged in -->
+    <mat-card>
+      <mat-card-title> EZ Accounts </mat-card-title>
+      <mat-card-subtitle> username: {{ user.displayName | json }} </mat-card-subtitle>
+      <mat-card-subtitle> email: {{ user.email | json }} </mat-card-subtitle>
+
+    </mat-card>
+    <button mat-raised-button color="accent" style="margin-top: 20px;padding-left: 50px;padding-right: 50px;"(click)="auth.signOut()">Sign Out</button>
+</div>
+
+    <!-- this is when not logged in-->
     <ng-template #login>
-      <button class="mat-button" (click)="auth.googleSignin()">Login</button>
+      <br>
+      <button style="margin-left: 100px;padding-left: 50px;padding-right: 50px;" mat-raised-button color="accent" (click)="auth.googleSignin()">Login</button>
+      <br>
     </ng-template>
-</main>
+
 
 
 <router-outlet></router-outlet>

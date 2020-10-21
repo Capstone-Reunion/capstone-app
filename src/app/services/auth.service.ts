@@ -56,7 +56,10 @@ private updateUserData(user){
   const data = {
     uid: user.uid,
     email: user.email,
-    displayName: user.displayName
+    displayName: user.displayName,
+
+
+
   };
   return userRef.set(data, { merge: true });
 }
