@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 //interact with firebase auth and firestore
-import { auth } from 'firebase/app';
+import { auth, firestore } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 //from rxjs for user control flow
@@ -41,6 +41,20 @@ async googleSignin(){
   const provider = new auth.GoogleAuthProvider();
   const credential = await this.afAuth.signInWithPopup(provider);
   return this.updateUserData(credential.user);
+
+}
+
+async addNewUserToFirestore(user) {
+  const collection = firestore().collection('user');
+  const {profile} = user.additionalUserInfo;
+  const details = {
+    displayName: profile.displayName,
+    email: profile.email,
+
+  };
+  collection.doc(auth().currentUser.uid).set(details);
+  return {user, details};
+
 
 }
 
