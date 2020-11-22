@@ -14,6 +14,7 @@ import {
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { User } from './user.model';
+//import { resolve } from 'dns';
 
 
 @Injectable({providedIn: 'root'})
@@ -30,7 +31,7 @@ export class AuthService {
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
-          return this.afs.doc<User>('users/${user.uid}').valueChanges();
+          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
         }
@@ -45,7 +46,7 @@ async googleSignin(){
 }
 
 async addNewUserToFirestore(user) {
-  const collection = firestore().collection('user');
+  const collection = firestore().collection('users');
   const {profile} = user.additionalUserInfo;
   const details = {
     displayName: profile.displayName,
@@ -65,7 +66,7 @@ async signOut(){
 
 private updateUserData(user){
   // sets user data to firestore on login
-  const userRef: AngularFirestoreDocument<User> = this.afs.doc('users/${user.uid}');
+  const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 
   const data = {
     uid: user.uid,
