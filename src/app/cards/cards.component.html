@@ -1,11 +1,10 @@
-<mat-card>
-<mat-card-title>Google Drive</mat-card-title>
-<br>
-<mat-card-subtitle>Email is: [ example ] </mat-card-subtitle>
-<br>
-<mat-card-subtitle>Password is: [ example ]</mat-card-subtitle>
-<mat-card-actions>
-    <button mat-raised-button color="primary">Edit information</button>
-</mat-card-actions>
+<div *ngIf='cards.length > 0;else noCards'>
+  <ul *ngFor="let card of cards">
+  <li class="collection-item"><strong>{{card.appid}}</strong></li>
+  </ul>
+  </div>
 
-</mat-card>
+  <ng-template #noCards>
+    <hr>
+    <h5>There is no information</h5>
+  </ng-template>

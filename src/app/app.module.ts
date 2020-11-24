@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 //Material Ui
 import { MatSliderModule } from '@angular/material/slider';
@@ -8,20 +9,30 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatCardModule} from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+
 
 //Firebase services
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { ReactiveFormsModule  } from '@angular/forms';
+import { AngularFirestore } from "@angular/fire/firestore";
 
 // import router
 import { RouterModule, Routes } from '@angular/router';
-
+import { AuthService } from './services/auth.service';
 
 
 import { AppComponent } from './app.component';
-import { FormComponent } from './form/form.component';
+
+
 import { CardsComponent } from './cards/cards.component';
+import { CardService } from './services/card.service';
+
+
+
 
 // config for connection
 const firebaseConfig = {
@@ -35,9 +46,12 @@ const firebaseConfig = {
   measurementId: "G-YZ5MR8JV2S"
 };
 
+
+
+
 @NgModule({
   declarations: [
-    AppComponent,FormComponent,CardsComponent,
+    AppComponent,CardsComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,8 +66,19 @@ const firebaseConfig = {
     AngularFirestoreModule,
     AngularFireAuthModule,
     RouterModule.forRoot([]),
+    FormsModule,
+    MatInputModule,
+    ReactiveFormsModule,
+
+
   ],
-  providers: [],
+  providers: [AuthService, CardService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+
+export class AppModule {
+
+
+
+}

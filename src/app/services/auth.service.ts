@@ -9,7 +9,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 //from rxjs for user control flow
 import {
   AngularFirestore,
-  AngularFirestoreDocument
+  AngularFirestoreDocument,
+  AngularFirestoreCollection
 } from '@angular/fire/firestore';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
@@ -64,5 +65,12 @@ private updateUserData(user){
   return userRef.set(data, { merge: true });
 }
 
+
+// this is for fetching items
+
+
+
+
 }
+
 

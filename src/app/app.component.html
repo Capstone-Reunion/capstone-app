@@ -6,21 +6,48 @@
 
 
     <!-- This is when loged in -->
+    <h1 style="margin-left: 20px;margin-top: 20px;">Add an app</h1>
+    <form>
+    <mat-form-field style="margin-left: 100px;">
+      <mat-label>username</mat-label>
+      <input matInput placeholder="username">
+      </mat-form-field>
+
+    <mat-form-field style="margin-left: 150px;">
+      <mat-label>email</mat-label>
+      <input matInput placeholder="email">
+    </mat-form-field>
+    <br>
+    <!--<button mat-raised-button style="margin-left: 125px;margin-bottom: 20px;" color="accent" (click)="onSubmit()">submit</button> -->
+    </form>
+
+
+    <cards></cards>
+
     <mat-card>
       <mat-card-title> EZ Accounts </mat-card-title>
       <mat-card-subtitle> username: {{ user.displayName | json }} </mat-card-subtitle>
       <mat-card-subtitle> email: {{ user.email | json }} </mat-card-subtitle>
 
+
     </mat-card>
     <button mat-raised-button color="accent" style="margin-top: 20px;padding-left: 50px;padding-right: 50px;"(click)="auth.signOut()">Sign Out</button>
-</div>
+
+
+
+
+  </div>
 
     <!-- this is when not logged in-->
     <ng-template #login>
       <br>
       <button style="margin-left: 100px;padding-left: 50px;padding-right: 50px;" mat-raised-button color="accent" (click)="auth.googleSignin()">Login</button>
       <br>
+
+
+
     </ng-template>
+
 
 
 
