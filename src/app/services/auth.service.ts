@@ -31,7 +31,7 @@ export class AuthService {
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
-          return this.afs.doc<User>('users/${user.uid}').valueChanges();
+          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
         }
@@ -52,7 +52,7 @@ async signOut(){
 
 private updateUserData(user){
   // sets user data to firestore on login
-  const userRef: AngularFirestoreDocument<User> = this.afs.doc('users/${user.uid}');
+  const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 
   const data = {
     uid: user.uid,
