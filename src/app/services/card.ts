@@ -1,5 +1,10 @@
 export interface Card{
-    appid?:string;
+    id?:string;
     username:string;
     email:string;
+    password: string;
+    appname: string;
+    comments: string;
+    piro:number;
+
 }

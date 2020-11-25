@@ -1,0 +1,30 @@
+<h1 style="margin-left: 20px;margin-top: 20px;">Add an app</h1>
+<form (ngSubmit)="onSubmit()">
+<mat-form-field style="margin-left: 100px;">
+  <mat-label>Username</mat-label>
+  <input matInput placeholder="username" [(ngModel)]="card.username" name="username">
+  </mat-form-field>
+
+<mat-form-field style="margin-left: 150px;">
+  <mat-label>Email</mat-label>
+  <input matInput placeholder="email" [(ngModel)]="card.email" name="email" >
+</mat-form-field>
+<mat-form-field style="margin-left: 200px;">
+  <mat-label>Comments</mat-label>
+  <input matInput placeholder="comments" [(ngModel)]="card.comments" name="comments" >
+</mat-form-field>
+<br>
+<mat-form-field style="margin-left: 100px;">
+  <mat-label>Password</mat-label>
+  <input matInput placeholder="password" [(ngModel)]="card.password" name="password" >
+</mat-form-field>
+<mat-form-field style="margin-left: 150px;">
+  <mat-label>Application name</mat-label>
+  <input matInput placeholder="Application name" [(ngModel)]="card.appname" name="appname" >
+</mat-form-field>
+<mat-label style="margin-left:10px;">Priority</mat-label>
+<mat-slider style="margin-left:5px;" thumbLabel [displayWith]="formatLabel" tickInterval="1000" min="1"  max="100000" [(ngModel)]="card.prio"></mat-slider>
+
+<br>
+<button mat-raised-button style="margin-left: 125px;margin-bottom: 20px;" color="accent" (click)="onSubmit()">submit</button>
+</form>

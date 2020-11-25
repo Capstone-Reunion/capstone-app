@@ -1,19 +1,31 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Observable, of } from 'rxjs';
+import { Observable} from 'rxjs';
 import { Card } from 'src/app/services/card';
-import { User } from './user.model';
+
+import { map } from 'rxjs/operators';
+
 @Injectable()
 export class CardService {
-  user$: Observable<User>;
+
   cardsCollection: AngularFirestoreCollection<Card>;
   cards: Observable<Card[]>;
   cardDoc: AngularFirestoreDocument<Card>;
 
   constructor(public afs: AngularFirestore) {
-    //this.items = this.afs.collection('items').valueChanges();
+
+    this.cardsCollection = this.afs.collection('cards', ref => ref.orderBy('username','asc'));
+
+    this.cards = this.cardsCollection.snapshotChanges().pipe(map(changes => {
+      return changes.map(a => {
+        const data = a.payload.doc.data() as Card;
+        data.id = a.payload.doc.id;
+        return data;
+    });
+    }));
 
   }
+
 
   getCards(){
     return this.cards;
@@ -23,13 +35,13 @@ export class CardService {
     this.cardsCollection.add(card);
   }
 
-  deleteItem(card: Card, user){
-    this.cardDoc = this.afs.doc(`users/${user.id}/app/${card.appid}`);
+  deleteCard(card: Card){
+    this.cardDoc = this.afs.doc(`cards/${card.id}`);
     this.cardDoc.delete();
   }
 
-  updateItem(card: Card, user){
-    this.cardDoc = this.afs.doc(`users/${user.id}/app/${card.appid}`);
+  updateItem(card: Card){
+    this.cardDoc = this.afs.doc(`cards/${card.id}`);
     this.cardDoc.update(card);
   }
 
