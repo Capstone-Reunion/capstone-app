@@ -1,6 +1,10 @@
-<mat-toolbar color="primary">Account Management</mat-toolbar>
+<mat-toolbar style="color: #03191E">Account Management</mat-toolbar>
 
-
+<style>
+body {
+  background-color: #B3C4D0;
+}
+</style>
 <div *ngIf="auth.user$ | async as user; else login">
 
 <!--
@@ -10,7 +14,7 @@
   -->
 
 
-    <mat-card>
+    <mat-card style="color: #03191E">
       <mat-card-title> EZ Accounts </mat-card-title>
       <mat-card-subtitle> username: {{ user.displayName | json }} </mat-card-subtitle>
       <mat-card-subtitle> email: {{ user.email | json }} </mat-card-subtitle>
@@ -29,8 +33,8 @@
 
     <!-- this is when not logged in-->
     <ng-template #login>
-      <h1 style="text-align: center;margin-top: 30px;">Account organization application</h1>
-      <div style="margin: 50px;">Built around the concept of “boards” and “cards.” Think of it like multiple bulletin boards with sticky notes, except you can
+      <h1 style="text-align: center;margin-top: 30px;color: #DB4359">Account organization application</h1>
+      <div style="margin: 50px;color: #03191E">Built around the concept of “boards” and “cards.” Think of it like multiple bulletin boards with sticky notes, except you can
         assign due dates, color codes, archive and set reminders. You can invite teams to work with, use the calendar feature, and be sure you’ll
         never miss a deadline because Trello automatically reminds you about anything coming up in the next three days. It’s a great way to make sure
         you’re getting things done.</div>
