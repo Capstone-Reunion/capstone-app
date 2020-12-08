@@ -5,6 +5,7 @@ export interface Card{
     password: string;
     appname: string;
     comments: string;
-    piro:number;
+    prio:number;
+    uid:string;
 
 }

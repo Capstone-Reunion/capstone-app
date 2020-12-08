@@ -4,17 +4,20 @@ import { Observable} from 'rxjs';
 import { Card } from 'src/app/services/card';
 
 import { map } from 'rxjs/operators';
+//import { userInfo } from 'os';
+import * as firebase from 'firebase';
 
 @Injectable()
-export class CardService {
 
+export class CardService {
   cardsCollection: AngularFirestoreCollection<Card>;
   cards: Observable<Card[]>;
   cardDoc: AngularFirestoreDocument<Card>;
+  user = firebase.auth().currentUser;
+  constructor(public afs: AngularFirestore ) {
+    
 
-  constructor(public afs: AngularFirestore) {
-
-    this.cardsCollection = this.afs.collection('cards', ref => ref.orderBy('username','asc'));
+    this.cardsCollection = this.afs.collection('cards', ref => ref.where('uid', '==', this.user.uid));
 
     this.cards = this.cardsCollection.snapshotChanges().pipe(map(changes => {
       return changes.map(a => {
