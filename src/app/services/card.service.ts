@@ -3,7 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable} from 'rxjs';
 import { Card } from 'src/app/services/card';
 
-import { map } from 'rxjs/operators';
+import { map, reduce } from 'rxjs/operators';
 //import { userInfo } from 'os';
 import * as firebase from 'firebase';
 
@@ -14,23 +14,26 @@ export class CardService {
   cards: Observable<Card[]>;
   cardDoc: AngularFirestoreDocument<Card>;
   user = firebase.auth().currentUser;
+
+
+
   constructor(public afs: AngularFirestore ) {
-    
 
-    this.cardsCollection = this.afs.collection('cards', ref => ref.where('uid', '==', this.user.uid));
 
-    this.cards = this.cardsCollection.snapshotChanges().pipe(map(changes => {
-      return changes.map(a => {
-        const data = a.payload.doc.data() as Card;
-        data.id = a.payload.doc.id;
-        return data;
-    });
-    }));
+    //this.cardsCollection = this.afs.collection('cards', ref => ref.where('uid', '==', this.user.uid));
+
 
   }
 
 
   getCards(){
+    this.cards = this.afs.collection('cards', ref => ref.where('uid', '==', this.user.uid)).snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Card;
+        const id = a.payload.doc.id;
+        return { id, ...data};
+      });
+    }));
     return this.cards;
   }
 
@@ -47,6 +50,7 @@ export class CardService {
     this.cardDoc = this.afs.doc(`cards/${card.id}`);
     this.cardDoc.update(card);
   }
+
 
 
 

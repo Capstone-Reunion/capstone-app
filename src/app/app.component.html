@@ -1,4 +1,4 @@
-<mat-toolbar style="color: #03191E">Account Management</mat-toolbar>
+<mat-toolbar color="primary">Account Management</mat-toolbar>
 
 <style>
 body {
@@ -23,8 +23,12 @@ body {
         <button mat-raised-button color="accent" style="margin-top: 20px;padding-left: 50px;padding-right: 50px;"(click)="auth.signOut()">Sign Out</button>
       </mat-card-actions>
     </mat-card>
+    <mat-toolbar color="primary">
 
+      <mat-toolbar-row>Add an App</mat-toolbar-row>
+    </mat-toolbar>
     <addcard></addcard>
+    <mat-toolbar color="primary">Applications</mat-toolbar>
 
     <cards></cards>
 

@@ -12,7 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import {MatTooltipModule} from '@angular/material/tooltip';
-
+import { MatChipsModule } from '@angular/material/chips';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 //Firebase services
 import { AngularFireModule } from '@angular/fire';
@@ -32,6 +33,7 @@ import { AddcardComponent } from './addcard/addcard.component'
 
 import { CardsComponent } from './cards/cards.component';
 import { CardService } from './services/card.service';
+import { OrderbyemailPipe } from './orderbyemail.pipe';
 
 
 
@@ -53,7 +55,7 @@ const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent,CardsComponent,AddcardComponent,
+    AppComponent,CardsComponent,AddcardComponent, OrderbyemailPipe,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +75,8 @@ const firebaseConfig = {
     ReactiveFormsModule,
     MatTooltipModule,
     MatSliderModule,
+    MatChipsModule,
+    MatButtonToggleModule,
 
 
   ],
