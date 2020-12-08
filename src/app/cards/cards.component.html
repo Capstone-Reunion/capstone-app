@@ -1,3 +1,9 @@
+<style>
+body {
+  background-color: #B3C4D0;
+}
+</style>
+
 <div *ngIf='cards.length > 0;else noCards'>
 
   <mat-card style="margin: 20px;margin-right:900px ;" *ngFor="let card of cards">
@@ -22,7 +28,7 @@
           <input matInput placeholder="username" [(ngModel)]="card.username" name="username">
           </mat-form-field>
 
-        <mat-form-field style="margin-left: 150px;">
+        <mat-form-field style="margin-left: 150px;+">
           <mat-label>email</mat-label>
           <input matInput placeholder="email" [(ngModel)]="card.email" name="email" >
         </mat-form-field>
