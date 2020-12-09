@@ -6,5 +6,6 @@ export interface Card{
     appname: string;
     comments: string;
     piro:number;
+    uid: string;
 
 }

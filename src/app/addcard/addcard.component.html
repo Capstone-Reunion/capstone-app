@@ -23,7 +23,7 @@
   <input matInput placeholder="Application name" [(ngModel)]="card.appname" name="appname" >
 </mat-form-field>
 <mat-label style="margin-left:10px;">Priority</mat-label>
-<mat-slider style="margin-left:5px;" thumbLabel [displayWith]="formatLabel" tickInterval="1000" min="1"  max="100000" [(ngModel)]="card.prio"></mat-slider>
+
 
 <br>
 <button mat-raised-button style="margin-left: 125px;margin-bottom: 20px;" color="accent" (click)="onSubmit()">submit</button>

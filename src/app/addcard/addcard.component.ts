@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CardService } from 'src/app/services/card.service';
 import { Card } from 'src/app/services/card';
+import * as firebase from 'firebase';
 @Component({
 	selector: 'addcard',
 	templateUrl: 'addcard.component.html'
 })
 
 export class AddcardComponent implements OnInit {
+user = firebase.auth().currentUser
 card: Card = {
   id:'',
   username:'',
@@ -14,7 +16,8 @@ card: Card = {
   password:'',
   appname:'',
   comments:'',
-  prio:0,
+  piro: 0,
+  uid: this.user.uid,
 }
 formatLabel(value: number) {
   if (value >= 1000) {
