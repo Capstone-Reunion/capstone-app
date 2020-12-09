@@ -21,7 +21,7 @@ card: Card = {
   password:'',
   appname:'',
   comments:'',
-  prio:0,
+  prio:false,
   uid:this.user.uid,
 }
 formatLabel(value: number) {

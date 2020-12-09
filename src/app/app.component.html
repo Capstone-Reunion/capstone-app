@@ -1,8 +1,9 @@
-<mat-toolbar color="primary">Account Management</mat-toolbar>
+<mat-toolbar color="primary">EZ Accounts</mat-toolbar> 
 
 <style>
 body {
   background-color: #B3C4D0;
+  
 }
 </style>
 <div *ngIf="auth.user$ | async as user; else login">
@@ -15,7 +16,8 @@ body {
 
 
     <mat-card style="color: #03191E">
-      <mat-card-title> EZ Accounts </mat-card-title>
+    
+      <mat-card-title> Account </mat-card-title>
       <mat-card-subtitle> username: {{ user.displayName | json }} </mat-card-subtitle>
       <mat-card-subtitle> email: {{ user.email | json }} </mat-card-subtitle>
 
