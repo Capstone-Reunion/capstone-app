@@ -5,7 +5,6 @@ export interface Card{
     password: string;
     appname: string;
     comments: string;
-    prio:boolean;
     uid:string;
 
 }

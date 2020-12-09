@@ -14,6 +14,8 @@ import * as firebase from 'firebase';
 
 export class AddcardComponent implements OnInit {
 user = firebase.auth().currentUser;
+
+
 card: Card = {
   id:'',
   username:'',
@@ -21,7 +23,6 @@ card: Card = {
   password:'',
   appname:'',
   comments:'',
-  prio:false,
   uid:this.user.uid,
 }
 formatLabel(value: number) {
@@ -36,7 +37,7 @@ formatLabel(value: number) {
   ngOnInit() { }
 
   onSubmit(){
-    
+
     if(this.card.username != '' && this.card.email != '' && this.card.appname !=''){
       this.cardService.addCards(this.card);
       this.card.username='';
