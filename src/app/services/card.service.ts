@@ -16,7 +16,7 @@ export class CardService {
 
   constructor(public afs: AngularFirestore,) {
 
-    //this.cardsCollection = this.afs.collection('cards', ref => ref.orderBy());
+    this.cardsCollection = this.afs.collection('cards', ref => ref.where('uid', '==', this.user.uid));
 
 
 
