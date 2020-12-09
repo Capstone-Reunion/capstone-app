@@ -39,13 +39,11 @@ body {
 
     <!-- this is when not logged in-->
     <ng-template #login>
-      <h1 style="text-align: center;margin-top: 30px;color: #DB4359">Account organization application</h1>
-      <div style="margin: 50px;color: #03191E">Built around the concept of “boards” and “cards.” Think of it like multiple bulletin boards with sticky notes, except you can
-        assign due dates, color codes, archive and set reminders. You can invite teams to work with, use the calendar feature, and be sure you’ll
-        never miss a deadline because Trello automatically reminds you about anything coming up in the next three days. It’s a great way to make sure
-        you’re getting things done.</div>
+      <h1 style="text-align: center;margin-top: 30px;color: #DB4359">Account Organization Application</h1>
+      <div style="margin: 50px;color: #03191E">A single place to manage and keep track of all your user accounts with real time updating and an intuitive design. 
+        Create, sort, edit, and delete your different accounts to keep easy track of all your information.</div>
       <br>
-      <button style="margin-left: 750px;padding-left: 50px;padding-right: 50px;" mat-raised-button color="accent" (click)="auth.googleSignin()">Signup</button>
+      <button style="margin-left: 550px;padding-left: 50px;padding-right: 50px;" mat-raised-button color="accent" (click)="auth.googleSignin()">Signup</button>
       <button style="margin-left: 100px;padding-left: 50px;padding-right: 50px;" mat-raised-button color="accent" (click)="auth.googleSignin()">Login</button>
 
       <br>

@@ -26,8 +26,8 @@ export class CardService {
     this.cards = this.afs.collection('cards', ref => ref.where('uid', '==', this.user.uid) && ref.orderBy(sort)).snapshotChanges().pipe(map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as Card;
-        const id = a.payload.doc.id;
-        return { id, ...data};
+        data.id = a.payload.doc.id;
+        return data;
       });
     }));
     return this.cards;
