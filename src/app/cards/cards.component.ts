@@ -14,20 +14,7 @@ export class CardsComponent implements OnInit {
   cards: Card[];
   editState: boolean = false;
   itemToEdit: Card;
-
-  //unwrapped arrays
-  filteredcards: any;
-
-  //filter-able properties
-  username: string;
-  email: string;
-  prio: boolean;
-
-  //active filter track
-  filters = {}
-
-
-
+  dSort = 'username';
 
 
   formatLabel(value: number) {
@@ -44,8 +31,8 @@ export class CardsComponent implements OnInit {
 
 
 
-     this.cardService.getCards().subscribe(cards => {
-      //console.log(cards);
+     this.cardService.getCards(this.dSort).subscribe(cards => {
+      console.log(this.dSort);
 
       this.cards = cards;
 
@@ -53,27 +40,23 @@ export class CardsComponent implements OnInit {
     })
 
   }
-    private applyFilters(){
-      this.filteredcards = _.filter(this.cards, _.conforms(this.filters) )
+    sortUsername(){
+      this.dSort = 'username';
+      this.ngOnInit();
     }
 
-    filterExact(property:string, rule:any){
-      this.filters[property] = val => val == rule
-      this.applyFilters()
+    sortEmail(){
+      this.dSort = 'email';
+      this.ngOnInit();
+    }
+    sortAppname(){
+      this.dSort = 'appname';
+      this.ngOnInit();
     }
 
-    filterBoolean(property: string, rule: boolean){
-      if (!rule) this.removeFilter(property)
-      else{
-        this.filters[property] =  val => val
-        this.applyFilters()
-        }
-    }
-
-    removeFilter(property: string){
-      delete this.filters[property]
-      this[property] = null
-      this.applyFilters()
+    sortPrio(){
+      this.dSort = 'prio';
+      this.ngOnInit();
     }
 
   deleteCard(event, card: Card){

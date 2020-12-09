@@ -7,7 +7,12 @@ body {
 
 
 <div *ngIf='cards.length > 0;else noCards'>
-
+  <span>
+    <button mat-stroked-button (click)="sortUsername($event)">Username</button>
+    <button mat-stroked-button (click)="sortEmail($event)">Email</button>
+    <button mat-stroked-button (click)="sortAppname($event)">Application Name</button>
+    <button mat-stroked-button (click)="sortPrio($event)">Priorety</button>
+  </span>
 
   <mat-card style="margin: 20px;margin-right:900px ;" *ngFor="let card of cards">
    <!-- <mat-card-subtitle>{{card.id}}</mat-card-subtitle> -->
